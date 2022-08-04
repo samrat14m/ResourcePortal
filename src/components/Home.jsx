@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import searchLogo from "../assets/search.png";
 import Card from "./Card";
-/*const arr = [
+const arr1 = [
   {
     title: "Nickelson and Sons",
     icon_url: "http://loremflickr.com/640/480",
@@ -305,21 +305,57 @@ import Card from "./Card";
     tag: "request",
     id: "30",
   },
-];*/
+];
 function Home() {
-  const [arr, setArr] = useState([]);
-  useEffect(() => {
+  const [arr, setArr] = useState(arr1);
+  const [searchInput, setSearchInput] = useState("");
+
+  /*  useEffect(() => {
     fetch(
       `https://media-content.ccbp.in/website/react-assignment/resources.json`
     )
       .then((response) => response.json())
       .then((actualData) => setArr(actualData));
-  }, []);
+  }, []);*/
+
+  function handleChange(event) {
+    console.log(event.target.value);
+    setSearchInput(event.target.value);
+  }
+
+  function handleSearch(searchKey) {
+    console.log(searchKey);
+    searchKey = searchKey.toUpperCase();
+    function searchMatch(element) {
+      console.log(element.title);
+      const string = element.title.toUpperCase();
+      const matchedArr = string.match(searchKey);
+      console.log(matchedArr);
+      return matchedArr !== null;
+    }
+
+    const searchedArr = arr1.filter(searchMatch);
+    console.log(searchedArr);
+    setArr(searchedArr);
+  }
+
   return (
     <div className="Home">
       <div className="searchBar">
-        <img src={searchLogo} alt="" />
-        <input type="text" placeholder="Search" />
+        <img
+          src={searchLogo}
+          alt=""
+          onClick={() => {
+            handleSearch(searchInput);
+          }}
+        />
+        <input
+          name="searchInput"
+          type="text"
+          placeholder="Search"
+          value={searchInput}
+          onChange={handleChange}
+        />
       </div>
       <div className="cardContainer">
         {arr.map((element) => {
