@@ -52,7 +52,7 @@
 
 /* Card */
 
-.Card{
+.card{
   width: 30%;
   height: 170px;
   border: 1px solid rgb(155, 155, 155);
@@ -67,6 +67,8 @@
   color: #7E858E;
 }
 
+
+
 .cardHead{
   display: flex;
 }
@@ -75,11 +77,30 @@
   border: 1px solid rgb(155, 155, 155);
   border-radius: 2px;
 }
+.card a div{
+  color: #7E858E;
+}
 
-.Card a{
+.card a{
  color: blue;
  text-decoration: none;
 }
 
+/**** Resource Page ****/
 
+.description{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  border: 1px solid rgb(155, 155, 155);
+}
+.tableContainer{
+  margin: 1rem 0;
+}
+table, td ,th ,tr{
+  border: 1px solid rgb(155, 155, 155);
+  border-collapse: collapse;
+  padding: 2px 5px;
+  font-size: 0.9rem;
+}
 

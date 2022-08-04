@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import searchLogo from "../assets/search.png";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 const arr1 = [
   {
     title: "Nickelson and Sons",
@@ -359,7 +360,14 @@ function Home() {
       </div>
       <div className="cardContainer">
         {arr.map((element) => {
-          return <Card card={element} key={element.id} />;
+          return (
+            <div className="card">
+              <Card card={element} key={element.id} />
+              <Link to={`/resource${element.id}`}>
+                <button>Show More</button>
+              </Link>
+            </div>
+          );
         })}
       </div>
     </div>

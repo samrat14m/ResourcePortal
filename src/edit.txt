@@ -1,0 +1,51 @@
+import { useNavigate} from "react-router-dom";
+
+export const Item = () => {
+    let navigate = useNavigate();
+    return (
+        <>
+          <button onClick={() => navigate(-1)}>Back</button> 
+        </>
+    );
+};
+
+navigate("/", { replace: true });
+
+//----------------------------------------->>>>>>>>>>>>>>>>>>>>
+
+<div className="description">
+        <img src={logo} alt="" width={"60px"} />
+        {data.title}
+        <a href={data.link}>{data.link}</a>
+        {data.description}
+      </div>
+      <button>Update</button>
+      <button onClick={() => console.log(data)}> show api data</button>
+      <br />
+      <br />
+
+      <div className="tableContainer">
+        <table>
+          <tr>
+            <td>TITLE</td>
+            <td>DESCRIPTION</td>
+            <td>LINK</td>
+          </tr>
+          {data.resource_items.map((element) => {
+            return (
+              <tr key={element.id}>
+                <td>{element.title}</td>
+                <td>{element.description.slice(0, 100) + "......"}</td>
+                <td>
+                  <a href={element.link}>{element.link}</a>
+                </td>
+              </tr>
+            );
+          })}
+        </table>
+      </div>
+
+      ----------------------------------------
+            {data.description}
+      {arr[3].description}
+      <img src={logo} alt="" />
