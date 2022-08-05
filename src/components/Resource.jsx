@@ -143,9 +143,15 @@ function Resource() {
   return (
     <div>
       <ResourceHead data={data} />
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "1rem",
+        }}
+      >
         <div>
-          <h4>Items</h4>
+          <h3>Items</h3>
         </div>
         <div style={{ display: "flex" }}>
           <SearchBar handleSearch={handleSearch} />

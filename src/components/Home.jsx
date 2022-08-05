@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import ReactPaginate from "react-paginate";
 const arr1 = [
@@ -350,9 +349,6 @@ function Home() {
           return (
             <div className="card" key={element.id}>
               <Card card={element} />
-              <Link to={`/resource/${element.id}`}>
-                <button>Show More</button>
-              </Link>
             </div>
           );
         })}

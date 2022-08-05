@@ -2,7 +2,7 @@ import React from "react";
 import sortLogo from "../assets/Icon.png";
 function SortIcon({ handleSort }) {
   return (
-    <div className="sort">
+    <div className="sort" style={{ marginTop: "-5px" }}>
       <div className="btn btn-group">
         <button
           type="button"

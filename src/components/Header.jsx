@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../assets/Nxt_logo.png";
 import user from "../assets/user.png";
-import { Link } from "react-router-dom";
 function Header() {
   return (
     <div>

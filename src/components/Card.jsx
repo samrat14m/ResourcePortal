@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Card({ card }) {
   return (
     <div className="Card">
@@ -16,6 +16,9 @@ function Card({ card }) {
         {card.link}
       </a>
       <p>{card.description}</p>
+      <Link to={`/resource/${card.id}`}>
+        <button>Show More</button>
+      </Link>
     </div>
   );
 }

@@ -29,11 +29,11 @@
   margin-bottom: 1.5rem;
   border: 1px solid rgb(155, 155, 155);
   border-radius: 2px;
-  width: 648px;
+  width: 50vw;
 
 }
 .searchBar input{
-  width: 608px;
+  width: 100%;
   height: 40px;
   padding: 0 0.5rem;
   border: none;
@@ -54,7 +54,7 @@
 
 .card{
   width: 30%;
-  height: 170px;
+  height: auto;
   border: 1px solid rgb(155, 155, 155);
   display: flex;
   flex-direction: column;
@@ -113,8 +113,8 @@ th{
 /***** Add Item Page ***/
 
 .AddItem{
+  max-width: 100vw;
   display: flex;
-  flex: 1 ;
 }
 
 
