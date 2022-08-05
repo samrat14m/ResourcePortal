@@ -5,14 +5,14 @@ import AddItem from './components/AddItem';
 import {Routes,Route} from 'react-router-dom';
 import Resource from './components/Resource';
 import Login from './components/Login';
-import Footer from './components/Footer';
+import { ToastContainer} from "react-toastify";
 
 function App() {
 
   return (
 
     <div className="App">
-      
+      <ToastContainer/>
       <Header/>
       <div className='content'> 
       <Routes>
@@ -21,9 +21,7 @@ function App() {
           <Route path='/resource/:id' element={<Resource/>}/>
           <Route path='resource/:id/add' element={<AddItem/>}/> 
       </Routes> 
-      </div>
-            
-      <Footer/>         
+      </div>       
     </div>
   );
 }

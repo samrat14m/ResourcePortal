@@ -4,8 +4,13 @@
   box-sizing: border-box;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
+a{
+  text-decoration: none;
+}
 .App {
   text-align: center;
+  background-color: #F5F5F5;
+  font-size: 15px;
 }
 /*Header */
 .header{

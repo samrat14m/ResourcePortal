@@ -6,7 +6,7 @@ import ResourceHead from "./ResourceHead";
 import SearchBar from "./SearchBar";
 import SortIcon from "./SortIcon";
 import ReactPaginate from "react-paginate";
-
+import { useNavigate } from "react-router-dom";
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -136,12 +136,16 @@ function Resource() {
       );
     }
   }
-
+  //navigate back
+  let navigator = useNavigate();
+  function goBack() {
+    navigator("/resource");
+  }
   if (Object.keys(data).length === 0) return <div>Loading...........</div>;
 
   return (
     <div>
-      <ResourceHead data={data} />
+      <ResourceHead data={data} logOut={goBack} />
       <div
         style={{
           display: "flex",

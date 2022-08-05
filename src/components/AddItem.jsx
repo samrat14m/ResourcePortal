@@ -1,10 +1,22 @@
 import React from "react";
+
+import { useNavigate, useParams } from "react-router-dom";
 //import image from "../assets/image.png";
 function AddItem() {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+  let id = useParams();
+  let navigator = useNavigate();
+  function goBack() {
+    navigator(`/resource/${id.id}`);
+  }
+
   return (
     <div className="AddItem">
+      <button onClick={goBack}>Users</button>
       <div className="form">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h2>Item Details </h2>
           <div class="mb-3">
             <label for="item_name" class="form-label">
