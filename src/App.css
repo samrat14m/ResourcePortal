@@ -147,3 +147,31 @@ th{
 }
 
 
+/*** pagination styles **/
+.paginationBtns{
+  color: blue;
+  width: 80%;
+  height:40px;
+  list-style: none;
+  display: flex;
+  justify-content: center; 
+}
+
+.paginationBtns a{
+  text-decoration: none;
+  padding:10px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  color: blue;
+  cursor: pointer;
+}
+
+.paginationBtns a:hover{
+  color: white;
+  background-color: blue;
+}
+
+.paginationActive a{
+  color: white;
+  background-color: blue;
+}

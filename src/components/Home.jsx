@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-
+import ReactPaginate from "react-paginate";
 const arr1 = [
   {
     title: "Nickelson and Sons",
@@ -310,6 +310,11 @@ const arr1 = [
 ];
 function Home() {
   const [arr, setArr] = useState(arr1);
+  const [pageNumber, setPageNumber] = useState(0);
+  const itemsPerPage = 10;
+  const pagesVisited = pageNumber * itemsPerPage;
+  const displayItems = arr.slice(pagesVisited, pagesVisited + itemsPerPage);
+  const pageCount = Math.ceil(arr.length / itemsPerPage);
 
   /*  useEffect(() => {
     fetch(
@@ -318,7 +323,9 @@ function Home() {
       .then((response) => response.json())
       .then((actualData) => setArr(actualData));
   }, []);*/
-
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
   function handleSearch(searchKey) {
     console.log(searchKey);
     searchKey = searchKey.toUpperCase();
@@ -339,7 +346,7 @@ function Home() {
     <div className="Home">
       <SearchBar handleSearch={handleSearch} />
       <div className="cardContainer">
-        {arr.map((element) => {
+        {displayItems.map((element) => {
           return (
             <div className="card" key={element.id}>
               <Card card={element} />
@@ -350,6 +357,17 @@ function Home() {
           );
         })}
       </div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage}
+        containerClassName={"paginationBtns"}
+        previousLinkClassName={"prevBtn"}
+        nextLinkClassName={"nextBtn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
     </div>
   );
 }
