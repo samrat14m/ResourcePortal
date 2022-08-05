@@ -93,6 +93,7 @@
   flex-direction: row;
   height: 100px;
   border: 1px solid rgb(155, 155, 155);
+  align-items: center;
 }
 .tableContainer{
   margin: 1rem 0;

@@ -87,6 +87,7 @@ function Resource() {
     }
     setItemsArr([...sortArr]);
   }
+  function handleDelete() {}
 
   if (Object.keys(data).length === 0)
     return (
@@ -114,9 +115,11 @@ function Resource() {
       >
         <div>
           <Link to={`/resource/${id}/add`}>
-            <button>Add Item</button>
+            <button className="btn btn-success">Add Item</button>
           </Link>
-          <button>Delete Item</button>
+          <button className="btn btn-danger" onClick={handleDelete}>
+            Delete Item
+          </button>
         </div>
         <div>
           <ReactPaginate

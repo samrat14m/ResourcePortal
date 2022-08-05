@@ -7,7 +7,7 @@ function ResourceHead({ data }) {
       {data.title}
       <a href={data.link}>{data.link}</a>
       {data.description}
-      <button>Update</button>
+      <button className="btn btn-primary">Update</button>
     </div>
   );
 }
