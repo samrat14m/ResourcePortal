@@ -311,7 +311,7 @@ const arr1 = [
 function Home() {
   const [arr, setArr] = useState(arr1);
   const [pageNumber, setPageNumber] = useState(0);
-  const itemsPerPage = 10;
+  const itemsPerPage = 6;
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = arr.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(arr.length / itemsPerPage);

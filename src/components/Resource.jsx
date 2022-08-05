@@ -5,11 +5,24 @@ import ItemsTable from "./ItemsTable";
 import ResourceHead from "./ResourceHead";
 import SearchBar from "./SearchBar";
 import SortIcon from "./SortIcon";
-
+import ReactPaginate from "react-paginate";
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
+  const [pageNumber, setPageNumber] = useState(0);
+  const itemsPerPage = 6;
+  const pagesVisited = pageNumber * itemsPerPage;
+  const displayItems = itemsArr.slice(
+    pagesVisited,
+    pagesVisited + itemsPerPage
+  );
+  const pageCount = Math.ceil(itemsArr.length / itemsPerPage);
+
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
   useEffect(() => {
     fetch(
       `https://media-content.ccbp.in/website/react-assignment/resource/${id}.json`
@@ -94,7 +107,7 @@ function Resource() {
           <SortIcon handleSort={handleSort} />
         </div>
       </div>
-      <ItemsTable currentItems={itemsArr} />
+      <ItemsTable currentItems={displayItems} />
       <div
         className="functions"
         style={{ display: "flex", justifyContent: "space-between" }}
@@ -105,7 +118,19 @@ function Resource() {
           </Link>
           <button>Delete Item</button>
         </div>
-        <div></div>
+        <div>
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBtns"}
+            previousLinkClassName={"prevBtn"}
+            nextLinkClassName={"nextBtn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />
+        </div>
       </div>
     </div>
   );
