@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import searchLogo from "../assets/search.png";
-
+import sortLogo from "../assets/Icon.png";
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
-  const [searchInput, setSearchInput] = useState({});
+  const [itemsArr, setItemsArr] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
     fetch(
       `https://media-content.ccbp.in/website/react-assignment/resource/${id}.json`
     )
       .then((response) => response.json())
-      .then((actualData) => setData({ ...actualData }));
+      .then((actualData) => {
+        return (
+          setData({ ...actualData }), setItemsArr(actualData.resource_items)
+        );
+      });
   }, [id]);
 
   function handleChange(event) {
@@ -19,6 +24,8 @@ function Resource() {
     setSearchInput(event.target.value);
   }
   function handleSearch() {}
+
+  function handleSort() {}
 
   if (Object.keys(data).length === 0)
     return (
@@ -29,7 +36,6 @@ function Resource() {
 
   return (
     <div>
-      hello
       <div className="description">
         <img src={data.icon_url} alt="" width={"60px"} />
         {data.title}
@@ -37,7 +43,6 @@ function Resource() {
         {data.description}
       </div>
       <button>Update</button>
-      <button onClick={() => console.log(data)}> show api data</button>
       <br />
       <br />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -61,7 +66,49 @@ function Resource() {
               onChange={handleChange}
             />
           </div>
-          <div className="sort">Sort</div>
+          <div className="sort">
+            {" "}
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-expanded="false"
+              >
+                <img src={sortLogo} alt="" /> Sort
+              </button>
+              <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Ascending
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Descending
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Recently Added
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <div className="tableContainer">
@@ -73,7 +120,7 @@ function Resource() {
             <td>LINK</td>
           </tr>
           <tbody>
-            {data.resource_items.map((element) => {
+            {itemsArr.map((element) => {
               if (data.resource_items !== null) {
                 return (
                   <tr key={element.id}>

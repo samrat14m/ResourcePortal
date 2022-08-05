@@ -49,3 +49,47 @@ navigate("/", { replace: true });
             {data.description}
       {arr[3].description}
       <img src={logo} alt="" />
+
+
+      -------------------------------
+
+                  <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-bs-toggle="dropdown"
+                data-bs-display="static"
+                aria-expanded="false"
+              >
+                <img src={sortLogo} alt="" /> Sort
+              </button>
+              <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Ascending
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Descending
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="dropdown-item"
+                    type="button"
+                    onClick={handleSort}
+                  >
+                    Recently Added
+                  </button>
+                </li>
+              </ul>
+            </div>
