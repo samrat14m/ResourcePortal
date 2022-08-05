@@ -23,8 +23,21 @@ function Resource() {
     console.log(event.target.value);
     setSearchInput(event.target.value);
   }
-  function handleSearch() {}
 
+  function handleSearch(searchKey) {
+    console.log(searchKey);
+    searchKey = searchKey.toUpperCase();
+    function searchMatch(element) {
+      console.log(element.title);
+      const string = element.title.toUpperCase();
+      const matchedArr = string.match(searchKey);
+      console.log(matchedArr);
+      return matchedArr !== null;
+    }
+    const searchedArr = itemsArr.filter(searchMatch);
+    console.log(searchedArr);
+    setItemsArr(searchedArr);
+  }
   function handleSort(event) {
     let sortArr = itemsArr;
     if (event.target.value === "asc") {
@@ -104,7 +117,6 @@ function Resource() {
             />
           </div>
           <div className="sort">
-            {" "}
             <div class="btn-group">
               <button
                 type="button"
