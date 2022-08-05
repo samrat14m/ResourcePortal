@@ -23,6 +23,11 @@
   margin: 0 10vw;
   min-height: 65.25vh;
 }
+/* home tab*/
+
+.hometab{
+  margin-bottom: 1rem;
+}
 /* Search Bar*/
 .searchBar{
   display: flex;

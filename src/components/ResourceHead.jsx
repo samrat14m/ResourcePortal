@@ -5,7 +5,9 @@ function ResourceHead({ data }) {
     <div className="description">
       <img src={data.icon_url} alt="" width={"60px"} />
       {data.title}
-      <a href={data.link}>{data.link}</a>
+      <a href={data.link} target={"_blank"} rel="noreferrer">
+        {data.link}
+      </a>
       {data.description}
       <button className="btn btn-primary">Update</button>
     </div>

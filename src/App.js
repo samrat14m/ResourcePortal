@@ -12,15 +12,17 @@ function App() {
   return (
 
     <div className="App">
+      
       <Header/>
-            <div className='content'> 
+      <div className='content'> 
       <Routes>
           <Route path='/' element={<Login/>} /> 
           <Route path ='/resource' element={<Home/>}/>
           <Route path='/resource/:id' element={<Resource/>}/>
-          <Route path='resource/:id/add' element={<AddItem/>}/>
+          <Route path='resource/:id/add' element={<AddItem/>}/> 
       </Routes> 
-            </div> 
+      </div>
+            
       <Footer/>         
     </div>
   );

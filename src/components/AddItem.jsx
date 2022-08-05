@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../assets/image.png";
+//import image from "../assets/image.png";
 function AddItem() {
   return (
     <div className="AddItem">
@@ -50,9 +50,6 @@ function AddItem() {
             CREATE
           </button>
         </form>
-      </div>
-      <div className="image">
-        <img src={image} alt="" />
       </div>
     </div>
   );

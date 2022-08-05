@@ -6,11 +6,13 @@ import ResourceHead from "./ResourceHead";
 import SearchBar from "./SearchBar";
 import SortIcon from "./SortIcon";
 import ReactPaginate from "react-paginate";
+
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
+  //const [loading, setLoading] = useState(true);
   //const [checkboxIdArr, setCheckboxIdArr] = useState([]);
   let checkboxIdArr = [];
   const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
@@ -28,6 +30,7 @@ function Resource() {
   };
 
   useEffect(() => {
+    //setLoading(false);
     fetch(
       `https://media-content.ccbp.in/website/react-assignment/resource/${id}.json`
     )
@@ -36,6 +39,7 @@ function Resource() {
         return (
           setData({ ...actualData }), setItemsArr(actualData.resource_items)
         );
+        //setLoading(true);
       });
   }, [id]);
 
@@ -133,12 +137,7 @@ function Resource() {
     }
   }
 
-  if (Object.keys(data).length === 0)
-    return (
-      <div>
-        <h2>Loading data for resource/{id}.....</h2>
-      </div>
-    );
+  if (Object.keys(data).length === 0) return <div>Loading...........</div>;
 
   return (
     <div>

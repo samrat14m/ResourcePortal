@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import ReactPaginate from "react-paginate";
+import HomeTab from "./HomeTab";
 const arr1 = [
   {
     title: "Nickelson and Sons",
@@ -340,9 +341,17 @@ function Home() {
     console.log(searchedArr);
     setArr(searchedArr);
   }
-
+  function handleResourceUpdate(event) {
+    console.log(event.target.value);
+    const newArr = arr.filter((element) => {
+      return element.tag === event.target.value;
+    });
+    console.log(newArr);
+    setArr(newArr);
+  }
   return (
     <div className="Home">
+      <HomeTab data={arr} handleResourceUpdate={handleResourceUpdate} />
       <SearchBar handleSearch={handleSearch} />
       <div className="cardContainer">
         {displayItems.map((element) => {

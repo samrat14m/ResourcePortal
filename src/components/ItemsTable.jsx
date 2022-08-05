@@ -26,7 +26,9 @@ function ItemsTable({ currentItems, handleCheckBoxClick }) {
                 <td>{element.title}</td>
                 <td>{element.description.slice(0, 100) + "......"}</td>
                 <td>
-                  <a href={element.link}>{element.link}</a>
+                  <a href={element.link} target={"_blank"} rel="noreferrer">
+                    {element.link}
+                  </a>
                 </td>
               </tr>
             );
