@@ -29,7 +29,6 @@ function Resource() {
     let sortArr = itemsArr;
     if (event.target.value === "asc") {
       console.log("asc");
-      sortArr.map((e) => console.log(e.title));
       sortArr.sort((a, b) => {
         let fa = a.title.toLowerCase(),
           fb = b.title.toLowerCase();
