@@ -25,7 +25,45 @@ function Resource() {
   }
   function handleSearch() {}
 
-  function handleSort() {}
+  function handleSort(event) {
+    let sortArr = itemsArr;
+    if (event.target.value === "asc") {
+      console.log("asc");
+      sortArr.map((e) => console.log(e.title));
+      sortArr.sort((a, b) => {
+        let fa = a.title.toLowerCase(),
+          fb = b.title.toLowerCase();
+
+        if (fa < fb) {
+          return -1;
+        }
+        if (fa > fb) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (event.target.value === "dsc") {
+      console.log("dsc");
+      sortArr.sort((a, b) => {
+        let fa = a.title.toLowerCase(),
+          fb = b.title.toLowerCase();
+
+        if (fa < fb) {
+          return 1;
+        }
+        if (fa > fb) {
+          return -1;
+        }
+        return 0;
+      });
+    } else if (event.target.value === "recent") {
+      console.log("recent");
+      sortArr.sort(function (a, b) {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+    }
+    setItemsArr([...sortArr]);
+  }
 
   if (Object.keys(data).length === 0)
     return (
@@ -83,6 +121,7 @@ function Resource() {
                   <button
                     class="dropdown-item"
                     type="button"
+                    value="asc"
                     onClick={handleSort}
                   >
                     Ascending
@@ -92,6 +131,7 @@ function Resource() {
                   <button
                     class="dropdown-item"
                     type="button"
+                    value="dsc"
                     onClick={handleSort}
                   >
                     Descending
@@ -101,6 +141,7 @@ function Resource() {
                   <button
                     class="dropdown-item"
                     type="button"
+                    value="recent"
                     onClick={handleSort}
                   >
                     Recently Added
