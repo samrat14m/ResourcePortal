@@ -11,7 +11,8 @@ function Resource() {
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  const [checkboxIdArr, setCheckboxIdArr] = useState([]);
+  //const [checkboxIdArr, setCheckboxIdArr] = useState([]);
+  let checkboxIdArr = [];
   const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
 
   const itemsPerPage = 6;
@@ -90,25 +91,27 @@ function Resource() {
     }
     setItemsArr([...sortArr]);
   }
-  function deleteItemsById() {}
+  // delete functionality
+  function deleteItemsById() {
+    console.log("i m working");
+    const checkboxIdSet = new Set(checkboxIdArr);
+    const newArr = itemsArr.filter((element) => {
+      return !checkboxIdSet.has(element.id);
+    });
+    setItemsArr(newArr);
+  }
 
   function checkBoxClick(event, id) {
     console.log(event.target.checked, id);
     const checked = event.target.checked;
-    if (checked) {
-      setCheckboxIdArr((prevIdArr) => {
-        return [...prevIdArr, id];
-      });
-    } else {
-      const newIdArr = checkboxIdArr.filter((element) => element !== id);
-      setCheckboxIdArr(newIdArr);
-    }
+
+    if (checked) checkboxIdArr = [...checkboxIdArr, id];
+    else checkboxIdArr = checkboxIdArr.filter((element) => element !== id);
+
     console.log(checkboxIdArr);
-    if (checkboxIdArr.length > -1) {
-      setDeleteBtnDisabled(false);
-    } else {
-      setDeleteBtnDisabled(true);
-    }
+
+    if (checkboxIdArr.length === 0) setDeleteBtnDisabled(true);
+    else setDeleteBtnDisabled(false);
   }
 
   // add item button
