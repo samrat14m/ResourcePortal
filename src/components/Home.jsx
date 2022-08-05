@@ -361,9 +361,9 @@ function Home() {
       <div className="cardContainer">
         {arr.map((element) => {
           return (
-            <div className="card">
-              <Card card={element} key={element.id} />
-              <Link to={`/resource${element.id}`}>
+            <div className="card" key={element.id}>
+              <Card card={element} />
+              <Link to={`/resource/${element.id}`}>
                 <button>Show More</button>
               </Link>
             </div>

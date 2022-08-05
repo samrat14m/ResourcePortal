@@ -12,8 +12,8 @@ function App() {
       <Header/> 
       <div className='content'>
         <Routes>
-          <Route exact path ='/' element={<Home/>}/>
-          <Route path='/:resourceId' element={<Resource/>}/> 
+          <Route exact path ='/resource' element={<Home/>}/>
+          <Route path='/resource/:id' element={<Resource/>}/> 
         </Routes>
       </div>
       

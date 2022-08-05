@@ -97,10 +97,15 @@
 .tableContainer{
   margin: 1rem 0;
 }
-table, td ,th ,tr{
+table,
+th,
+tr {
   border: 1px solid rgb(155, 155, 155);
   border-collapse: collapse;
   padding: 2px 5px;
   font-size: 0.9rem;
+}
+th{
+  min-height:3rem;
 }
 
