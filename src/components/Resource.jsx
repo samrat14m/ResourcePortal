@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import searchLogo from "../assets/search.png";
 import sortLogo from "../assets/Icon.png";
+import { Link } from "react-router-dom";
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -197,7 +198,9 @@ function Resource() {
         style={{ display: "flex", justifyContent: "space-between" }}
       >
         <div>
-          <button>Add Item</button>
+          <Link to={`/resource/${id}/add`}>
+            <button>Add Item</button>
+          </Link>
           <button>Delete Item</button>
         </div>
         <div></div>
