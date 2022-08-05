@@ -14,7 +14,7 @@ function AddItem() {
               type="text"
               class="form-control"
               id="item_name"
-              required="true"
+              required={true}
             />
           </div>
           <div class="mb-3">
@@ -31,7 +31,7 @@ function AddItem() {
               type="text"
               class="form-control"
               id="resource_page"
-              required="true"
+              required={true}
             />
           </div>
           <div class="mb-3">
@@ -43,7 +43,7 @@ function AddItem() {
               rows="100"
               columns="500"
               id="description"
-              required="true"
+              required={true}
             />
           </div>
           <button type="submit" class="btn btn-primary">

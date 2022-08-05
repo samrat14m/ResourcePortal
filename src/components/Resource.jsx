@@ -11,6 +11,9 @@ function Resource() {
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
+  const [checkboxIdArr, setCheckboxIdArr] = useState([]);
+  const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
+
   const itemsPerPage = 6;
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = itemsArr.slice(
@@ -87,7 +90,45 @@ function Resource() {
     }
     setItemsArr([...sortArr]);
   }
-  function handleDelete() {}
+  function deleteItemsById() {}
+
+  function checkBoxClick(event, id) {
+    console.log(event.target.checked, id);
+    const checked = event.target.checked;
+    if (checked) {
+      setCheckboxIdArr((prevIdArr) => {
+        return [...prevIdArr, id];
+      });
+    } else {
+      const newIdArr = checkboxIdArr.filter((element) => element !== id);
+      setCheckboxIdArr(newIdArr);
+    }
+    console.log(checkboxIdArr);
+    if (checkboxIdArr.length > -1) {
+      setDeleteBtnDisabled(false);
+    } else {
+      setDeleteBtnDisabled(true);
+    }
+  }
+
+  // add item button
+  function addItemBtn() {
+    if (deleteBtnDisabled) {
+      return (
+        <Link to={`/resource/${id}/add`}>
+          <button className="btn btn-success" disabled={!deleteBtnDisabled}>
+            Add Item
+          </button>
+        </Link>
+      );
+    } else {
+      return (
+        <button className="btn btn-success" disabled={!deleteBtnDisabled}>
+          Add Item
+        </button>
+      );
+    }
+  }
 
   if (Object.keys(data).length === 0)
     return (
@@ -108,16 +149,21 @@ function Resource() {
           <SortIcon handleSort={handleSort} />
         </div>
       </div>
-      <ItemsTable currentItems={displayItems} />
+      <ItemsTable
+        currentItems={displayItems}
+        handleCheckBoxClick={checkBoxClick}
+      />
       <div
         className="functions"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
         <div>
-          <Link to={`/resource/${id}/add`}>
-            <button className="btn btn-success">Add Item</button>
-          </Link>
-          <button className="btn btn-danger" onClick={handleDelete}>
+          {addItemBtn()}
+          <button
+            className="btn btn-danger"
+            onClick={deleteItemsById}
+            disabled={deleteBtnDisabled}
+          >
             Delete Item
           </button>
         </div>
