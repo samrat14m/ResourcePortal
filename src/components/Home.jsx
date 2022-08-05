@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import searchLogo from "../assets/search.png";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+
 const arr1 = [
   {
     title: "Nickelson and Sons",
@@ -309,7 +310,6 @@ const arr1 = [
 ];
 function Home() {
   const [arr, setArr] = useState(arr1);
-  const [searchInput, setSearchInput] = useState("");
 
   /*  useEffect(() => {
     fetch(
@@ -318,11 +318,6 @@ function Home() {
       .then((response) => response.json())
       .then((actualData) => setArr(actualData));
   }, []);*/
-
-  function handleChange(event) {
-    console.log(event.target.value);
-    setSearchInput(event.target.value);
-  }
 
   function handleSearch(searchKey) {
     console.log(searchKey);
@@ -342,22 +337,7 @@ function Home() {
 
   return (
     <div className="Home">
-      <div className="searchBar">
-        <img
-          src={searchLogo}
-          alt=""
-          onClick={() => {
-            handleSearch(searchInput);
-          }}
-        />
-        <input
-          name="searchInput"
-          type="text"
-          placeholder="Search"
-          value={searchInput}
-          onChange={handleChange}
-        />
-      </div>
+      <SearchBar handleSearch={handleSearch} />
       <div className="cardContainer">
         {arr.map((element) => {
           return (

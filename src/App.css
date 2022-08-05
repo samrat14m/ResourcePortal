@@ -21,7 +21,7 @@
 .content{
   width:80vw;
   margin: 0 10vw;
-  min-height: 80vh;
+  min-height: 65.25vh;
 }
 /* Search Bar*/
 .searchBar{
@@ -127,4 +127,23 @@ th{
   object-fit:fill;
   height: 400px;
 }
+
+/***** Login Page **/
+
+.form{
+  border: 1px solid #7E858E;
+  border-radius: 10px;
+  padding: 3rem;
+  max-width: 50vw;
+  text-align:justify;
+  margin: 10vh 25vw 0;
+}
+
+/*** Footer ***/
+.foot{
+  width: 100vw;
+  background-color: rgba(39, 39, 239, 0.705);
+  height: 100px;
+}
+
 

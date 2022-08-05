@@ -103,3 +103,20 @@ navigate("/", { replace: true });
           <Route path='/resource/:id' element={<Resource/>}/>
           <Route path='resource/:id/add' element={<AddItem/>}/>
         </Routes>
+
+        -------------------------------
+
+        paginate function--->
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
+
+  //get current items
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = arr.slice(indexOfFirstItem, indexOfLastItem);
+
+  function paginate(itemNumber) {
+    setCurrentPage(itemNumber);
+  }
+

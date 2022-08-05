@@ -5,6 +5,7 @@ import AddItem from './components/AddItem';
 import {Routes,Route} from 'react-router-dom';
 import Resource from './components/Resource';
 import Login from './components/Login';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -13,12 +14,14 @@ function App() {
     <div className="App">
       <Header/>
             <div className='content'> 
-      <Routes>  
-          <Route exact path ='/resource' element={<Home/>}/>
+      <Routes>
+          <Route path='/' element={<Login/>} /> 
+          <Route path ='/resource' element={<Home/>}/>
           <Route path='/resource/:id' element={<Resource/>}/>
           <Route path='resource/:id/add' element={<AddItem/>}/>
       </Routes> 
-            </div>    
+            </div> 
+      <Footer/>         
     </div>
   );
 }
