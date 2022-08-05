@@ -93,3 +93,13 @@ navigate("/", { replace: true });
                 </li>
               </ul>
             </div>
+
+
+
+            -----------------------------
+
+                   <Routes>
+          <Route exact path ='/resource' element={<Home/>}/>
+          <Route path='/resource/:id' element={<Resource/>}/>
+          <Route path='resource/:id/add' element={<AddItem/>}/>
+        </Routes>

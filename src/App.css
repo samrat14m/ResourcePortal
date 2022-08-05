@@ -109,3 +109,22 @@ th{
   min-height:3rem;
 }
 
+/***** Add Item Page ***/
+
+.AddItem{
+  display: flex;
+  flex: 1 ;
+}
+
+
+
+.AddItem div{
+  width: 50%;
+}
+
+.AddItem img{
+  width: 600px;
+  object-fit:fill;
+  height: 400px;
+}
+

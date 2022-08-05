@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import searchLogo from "../assets/search.png";
 import sortLogo from "../assets/Icon.png";
 import { Link } from "react-router-dom";
+
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
