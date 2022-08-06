@@ -45,7 +45,7 @@ function Resource() {
     };
     const timer = setTimeout(() => {
       fetchData();
-    }, 3000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [id]);
@@ -195,7 +195,7 @@ function Resource() {
             </button>
           </div>
         </div>
-        <div className="paginateBtns">
+        <div className="paginateBtnsContainer">
           <ReactPaginate
             previousLabel={"<<"}
             nextLabel={">>"}

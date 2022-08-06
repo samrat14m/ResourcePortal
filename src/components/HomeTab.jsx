@@ -1,6 +1,6 @@
 import React from "react";
 
-function HomeTab({ arr, handleResourceUpdate }) {
+function HomeTab({ handleResourceUpdate }) {
   return (
     <div className="hometab">
       <button

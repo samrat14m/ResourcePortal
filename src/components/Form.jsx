@@ -19,7 +19,7 @@ function Form() {
     setIsSubmit(true);
   };
 
-  /**  function for posting data to api and getting response */
+  /**  function for posting data to api  */
   function postData(data) {
     fetch(
       "https://media-content.ccbp.in/website/react-assignment/add_resource.json",

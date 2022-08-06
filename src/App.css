@@ -118,7 +118,8 @@ a{
 
 .card{
   width: 30%;
-  height: 210px;
+  min-height: 210px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -395,4 +396,49 @@ th,thead{
   background-color: white;
   border: 2px solid #0B69FF;
 }
+
+
+/*** MediaQueries */
+@media only screen and (max-width:660) {
+  .paginateBtns a {
+    padding: none;
+  }
+
+  .paginateBtns {
+    height: 100px;
+    margin-left: 50px;
+  }
+  .App{
+    font-size: 80%;
+  }
+
+}
+@media only screen and (max-width: 800px) {
+ .blank{
+  display: hidden;
+ }
+ .paginationBtns {
+   width: 40%;
+   height: 45px;
+
+ }
+ .App{
+  font-size:90%;
+ }
+ .bottombuttons{
+  flex-direction: column;
+ }
+ .functions{
+  margin: 50px 20px;
+ }
+ .cardContainer{
+  flex-direction: column;
+ }
+ .card{
+  width:60vw;
+ }
+}
+
+
+
 

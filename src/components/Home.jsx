@@ -7,11 +7,18 @@ import Loading from "./Loading";
 
 function Home() {
   const [arr, setArr] = useState([]);
+
+  /** creating variables for pagination */
   const [pageNumber, setPageNumber] = useState(0);
   const itemsPerPage = 6;
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = arr.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(arr.length / itemsPerPage);
+
+  /**page no change function */
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   /**Fetching data from API */
   useEffect(() => {
@@ -31,10 +38,6 @@ function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
-
   /** search implementation */
   function handleSearch(searchKey) {
     console.log(searchKey);
@@ -47,7 +50,7 @@ function Home() {
       return matchedArr !== null;
     }
 
-    const searchedArr = arr1.filter(searchMatch);
+    const searchedArr = arr.filter(searchMatch);
     console.log(searchedArr);
     setArr(searchedArr);
   }
@@ -65,7 +68,7 @@ function Home() {
 
   return (
     <div className="Home">
-      <HomeTab data={arr} handleResourceUpdate={handleResourceUpdate} />
+      <HomeTab handleResourceUpdate={handleResourceUpdate} />
       <SearchBar handleSearch={handleSearch} />
       <div className="cardContainer">
         {displayItems.map((element) => {
