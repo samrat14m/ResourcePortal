@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Form() {
   /**creating state variables */
-  const initialValues = { name: "", link: "", resource: "", description: "" };
-  const [formValues, setFormValues] = useState(initialValues);
-  const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    link: "",
+    resource: "",
+    description: "",
+  });
 
   /***filling the form values */
   const handleChange = (e) => {
@@ -15,15 +20,19 @@ function Form() {
   /*** submit the form */
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormErrors(validate(formValues));
-    setIsSubmit(true);
+    const errCount = validate(formValues);
+    if (errCount === 0) {
+      successToastGenrator("Form Validation Successful");
+      postData(formValues);
+    }
   };
 
   /**  function for posting data to api  */
-  function postData(data) {
-    fetch(
+  async function postData(data) {
+    await fetch(
       "https://media-content.ccbp.in/website/react-assignment/add_resource.json",
       {
+        mode: "no-cors",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -31,35 +40,62 @@ function Form() {
     )
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-      });
+        if (res.status === 200) {
+          successToastGenrator("Item Added Succesfully");
+        }
+      })
+      .catch((e) =>
+        errorToastGenrator(`Error in Form Submition \n ${e.message}`)
+      );
   }
-  /** final submit once the formErrors Object is empty*/
-  useEffect(() => {
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
-      postData(formValues);
-    }
-  }, [formErrors]);
 
+  /** toast generalised function */
+  const errorToastGenrator = (message) => {
+    toast.error(message, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
+  /** */
+  const successToastGenrator = (message) => {
+    toast.success(message, {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
   /***  validation function*/
   const validate = (values) => {
-    const errors = {};
+    let errorsCount = 0;
     const regexLink =
       /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
     if (values.name.length > 12 || values.name.length < 4) {
-      errors.name = "Enter a item name between (4-12)";
+      errorToastGenrator("Item Name should be in (4-12) characters");
+      errorsCount++;
     }
     if (values.description.length > 50 || values.description.length < 15) {
-      errors.description = "Enter a description between (15-50) words";
+      errorToastGenrator("Enter a description between (15-50) words");
+      errorsCount++;
     }
     if (!regexLink.test(values.link)) {
-      errors.link = "Please Provide a valid link";
+      errorToastGenrator("Please Provide a valid link");
+      errorsCount++;
     }
     if (values.resource.length > 12 || values.resource.length < 4) {
-      errors.resource = "Enter a item name between (4-12)";
+      errorToastGenrator("Enter a item name between (4-12)");
+      errorsCount++;
     }
-    return errors;
+    return errorsCount;
   };
 
   return (
@@ -78,7 +114,6 @@ function Form() {
             value={formValues.name}
             onChange={handleChange}
           />
-          <p style={{ color: "red" }}>{formErrors.name}</p>
         </div>
         <div className="">
           <label for="link" className="">
@@ -93,7 +128,6 @@ function Form() {
             value={formValues.link}
             onChange={handleChange}
           />
-          <p style={{ color: "red" }}>{formErrors.link}</p>
         </div>
         <div className="">
           <label for="resource_name" className="">
@@ -108,7 +142,6 @@ function Form() {
             value={formValues.resource}
             onChange={handleChange}
           />
-          <p style={{ color: "red" }}>{formErrors.resource}</p>
         </div>
         <div className="">
           <label for="description" className="">
@@ -123,7 +156,6 @@ function Form() {
             value={formValues.description}
             onChange={handleChange}
           />
-          <p style={{ color: "red" }}>{formErrors.description}</p>
         </div>
 
         <button type="submit" className="updatebtn">

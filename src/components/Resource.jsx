@@ -52,13 +52,11 @@ function Resource() {
 
   /** Implementing the search */
   function handleSearch(searchKey) {
-    console.log(searchKey);
     searchKey = searchKey.toUpperCase();
+
     function searchMatch(element) {
-      console.log(element.title);
       const string = element.title.toUpperCase();
       const matchedArr = string.match(searchKey);
-      console.log(matchedArr);
       return matchedArr !== null;
     }
     const searchedArr = itemsArr.filter(searchMatch);
