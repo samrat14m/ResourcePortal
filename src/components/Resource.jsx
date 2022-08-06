@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ItemsTable from "./ItemsTable";
 import ResourceHead from "./ResourceHead";
 import SearchBar from "./SearchBar";
 import SortIcon from "./SortIcon";
 import ReactPaginate from "react-paginate";
-import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 
 function Resource() {
@@ -18,6 +16,7 @@ function Resource() {
   let checkboxIdArr = [];
   const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
 
+  /** creating varialbles for pagination */
   const itemsPerPage = 6;
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = itemsArr.slice(
@@ -44,7 +43,6 @@ function Resource() {
         })
         .catch((e) => console.error(e));
     };
-
     const timer = setTimeout(() => {
       fetchData();
     }, 3000);
@@ -52,6 +50,7 @@ function Resource() {
     return () => clearTimeout(timer);
   }, [id]);
 
+  /** Implementing the search */
   function handleSearch(searchKey) {
     console.log(searchKey);
     searchKey = searchKey.toUpperCase();
@@ -66,6 +65,8 @@ function Resource() {
     console.log(searchedArr);
     setItemsArr(searchedArr);
   }
+
+  // sort functionality
   function handleSort(event) {
     let sortArr = itemsArr;
     if (event.target.value === "asc") {
@@ -114,6 +115,7 @@ function Resource() {
     setItemsArr(newArr);
   }
 
+  // creating a list of checkbox ids for deleting
   function checkBoxClick(event, id) {
     console.log(event.target.checked, id);
     const checked = event.target.checked;
@@ -127,7 +129,7 @@ function Resource() {
     else setDeleteBtnDisabled(false);
   }
 
-  // add item button
+  // conditional rendering for the addItem button
   function addItemBtn() {
     if (deleteBtnDisabled) {
       return (
@@ -145,11 +147,14 @@ function Resource() {
       );
     }
   }
-  //navigate back
+
+  // function for navigating back
   let navigator = useNavigate();
   function goBack() {
     navigator("/resource");
   }
+
+  // conditional rendering for loading screen
   if (Object.keys(data).length === 0) return <Loading message={"Loading..."} />;
 
   return (
