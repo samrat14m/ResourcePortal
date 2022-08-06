@@ -8,9 +8,10 @@ function ResourceHead({ data, goBack }) {
       </button>
       <div className="description">
         <div className="descriptionTop">
-          <div className="descriptionImgContainer">
-            <img src={data.icon_url} alt="" height={"60px"} />
-          </div>
+          <div
+            className="descriptionImgContainer"
+            style={{ backgroundImage: `url(${data.icon_url})` }}
+          ></div>
           <div className="namelink">
             <div>{data.title}</div>
             <a href={data.link} target={"_blank"} rel="noreferrer">

@@ -7,7 +7,7 @@ function Login() {
   const navigate = useNavigate();
   const admin = {
     phoneNumber: "9191919191",
-    password: "adminlogin",
+    password: "password",
   };
 
   function handleSubmit(e) {
@@ -57,7 +57,8 @@ function Login() {
     }
   }
   return (
-    <div>
+    <div style={{ height: "100vh" }}>
+      <h2> Resource Management Admin Portal</h2>
       <form className="loginform" onSubmit={handleSubmit}>
         <div>
           <label for="phoneNumber">Enter your Phone No.</label>
@@ -77,7 +78,7 @@ function Login() {
             required="true"
           />
           <button type="submit" class="btn btn-primary">
-            Submit
+            LOGIN
           </button>
         </div>
       </form>

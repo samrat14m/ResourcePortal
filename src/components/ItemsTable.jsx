@@ -3,7 +3,7 @@ function ItemsTable({ currentItems, handleCheckBoxClick }) {
   return (
     <div className="tableContainer">
       <table className="table table hover">
-        <thead>
+        <thead className="thead">
           <tr>
             <td></td>
             <td>TITLE</td>

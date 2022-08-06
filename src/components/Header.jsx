@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import logo from "../assets/Nxt_logo.png";
-import userImage from "../assets/user.png";
+import userImage from "../assets/admin.png";
 import { useNavigate } from "react-router-dom";
 function Header() {
   const [toggle, setToggle] = useState(false);
   const display = toggle ? "inline" : "none";
   let buttonStyle = {
     display,
-    color: "blue",
+    color: "#FF0B37",
+    border: "2px solid #FF0B37",
+    borderRadius: "5px",
+    padding: "5px 10px",
   };
 
   function handleUser() {
@@ -18,6 +21,7 @@ function Header() {
   let navigator = useNavigate();
   function logOut() {
     navigator("/");
+    setToggle(!toggle);
   }
 
   return (
@@ -33,7 +37,7 @@ function Header() {
               handleUser();
             }}
           />
-          <button className="LogOutBtn" onClick={logOut} style={buttonStyle}>
+          <button onClick={logOut} style={buttonStyle}>
             Log Out
           </button>
         </div>

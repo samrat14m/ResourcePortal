@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import ReactPaginate from "react-paginate";
 import HomeTab from "./HomeTab";
+import Loading from "./Loading";
 const arr1 = [
   {
     title: "Nickelson and Sons",
@@ -309,20 +310,31 @@ const arr1 = [
   },
 ];
 function Home() {
-  const [arr, setArr] = useState(arr1);
+  const [arr, setArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const itemsPerPage = 6;
   const pagesVisited = pageNumber * itemsPerPage;
   const displayItems = arr.slice(pagesVisited, pagesVisited + itemsPerPage);
   const pageCount = Math.ceil(arr.length / itemsPerPage);
 
-  /*  useEffect(() => {
-    fetch(
-      `https://media-content.ccbp.in/website/react-assignment/resources.json`
-    )
-      .then((response) => response.json())
-      .then((actualData) => setArr(actualData));
-  }, []);*/
+  /**Fetching data from API */
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetch(
+        `https://media-content.ccbp.in/website/react-assignment/resources.json`
+      )
+        .then((res) => res.json())
+        .then((actualData) => setArr(actualData))
+        .catch((e) => console.error(e));
+    };
+
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -349,6 +361,7 @@ function Home() {
     console.log(newArr);
     setArr(newArr);
   }
+  if (arr.length === 0) return <Loading />;
   return (
     <div className="Home">
       <HomeTab data={arr} handleResourceUpdate={handleResourceUpdate} />

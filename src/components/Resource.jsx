@@ -7,13 +7,14 @@ import SearchBar from "./SearchBar";
 import SortIcon from "./SortIcon";
 import ReactPaginate from "react-paginate";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
+
 function Resource() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
-  //const [loading, setLoading] = useState(true);
-  //const [checkboxIdArr, setCheckboxIdArr] = useState([]);
+
   let checkboxIdArr = [];
   const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
 
@@ -29,18 +30,26 @@ function Resource() {
     setPageNumber(selected);
   };
 
+  /**Fetching data from API */
   useEffect(() => {
-    //setLoading(false);
-    fetch(
-      `https://media-content.ccbp.in/website/react-assignment/resource/${id}.json`
-    )
-      .then((response) => response.json())
-      .then((actualData) => {
-        return (
-          setData({ ...actualData }), setItemsArr(actualData.resource_items)
-        );
-        //setLoading(true);
-      });
+    const fetchData = async () => {
+      await fetch(
+        `https://media-content.ccbp.in/website/react-assignment/resource/${id}.json`
+      )
+        .then((res) => res.json())
+        .then((actualData) => {
+          return (
+            setData({ ...actualData }), setItemsArr(actualData.resource_items)
+          );
+        })
+        .catch((e) => console.error(e));
+    };
+
+    const timer = setTimeout(() => {
+      fetchData();
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, [id]);
 
   function handleSearch(searchKey) {
@@ -141,11 +150,11 @@ function Resource() {
   function goBack() {
     navigator("/resource");
   }
-  if (Object.keys(data).length === 0) return <div>Loading...........</div>;
+  if (Object.keys(data).length === 0) return <Loading message={"Loading..."} />;
 
   return (
     <div>
-      <ResourceHead data={data} logOut={goBack} />
+      <ResourceHead data={data} goBack={goBack} />
       <div
         style={{
           display: "flex",

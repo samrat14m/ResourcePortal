@@ -4,7 +4,10 @@ function Card({ card }) {
   return (
     <div className="Card">
       <div className="cardHead">
-        <div className="cardimage"></div>
+        <div
+          className="cardimage"
+          style={{ backgroundImage: `url(${card.icon_url})` }}
+        ></div>
         <div>
           <div>
             <div className="cardtitle">{card.title}</div>

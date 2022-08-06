@@ -37,7 +37,7 @@ function Form() {
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit) {
       console.log(formValues);
-      //postData(formValues);
+      postData(formValues);
     }
   }, [formErrors]);
 
