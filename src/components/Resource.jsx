@@ -195,7 +195,7 @@ function Resource() {
             </button>
           </div>
         </div>
-        <div className="paginateBtnsContainer">
+        <div className="paginateBtns">
           <ReactPaginate
             previousLabel={"<<"}
             nextLabel={">>"}
