@@ -10,6 +10,7 @@ function Login() {
     password: "password",
   };
 
+  /**login page validation */
   function handleSubmit(e) {
     e.preventDefault();
     let authentication = false;
@@ -56,6 +57,7 @@ function Login() {
       }
     }
   }
+
   return (
     <div style={{ height: "100vh" }}>
       <h2> Resource Management Admin Portal</h2>

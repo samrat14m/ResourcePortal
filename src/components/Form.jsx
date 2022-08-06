@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 function Form() {
+  /**creating state variables */
   const initialValues = { name: "", link: "", resource: "", description: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
@@ -18,7 +19,7 @@ function Form() {
     setIsSubmit(true);
   };
 
-  /** posting data to api and getting response */
+  /**  function for posting data to api and getting response */
   function postData(data) {
     fetch(
       "https://media-content.ccbp.in/website/react-assignment/add_resource.json",
