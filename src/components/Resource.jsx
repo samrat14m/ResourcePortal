@@ -45,7 +45,7 @@ function Resource() {
     };
     const timer = setTimeout(() => {
       fetchData();
-    }, 500);
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, [id]);

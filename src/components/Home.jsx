@@ -33,7 +33,7 @@ function Home() {
 
     const timer = setTimeout(() => {
       fetchData();
-    }, 3500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
