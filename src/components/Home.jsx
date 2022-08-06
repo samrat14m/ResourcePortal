@@ -7,6 +7,7 @@ import Loading from "./Loading";
 
 function Home() {
   const [arr, setArr] = useState([]);
+  const [isPending, setIsPending] = useState(true);
 
   /** creating variables for pagination */
   const [pageNumber, setPageNumber] = useState(0);
@@ -27,7 +28,10 @@ function Home() {
         `https://media-content.ccbp.in/website/react-assignment/resources.json`
       )
         .then((res) => res.json())
-        .then((actualData) => setArr(actualData))
+        .then((actualData) => {
+          setArr(actualData);
+          setIsPending(false);
+        })
         .catch((e) => console.error(e));
     };
 
@@ -64,8 +68,7 @@ function Home() {
   }
 
   /**conditonal rendering for loading screen */
-  if (arr.length === 0) return <Loading />;
-
+  if (isPending) return <Loading />;
   return (
     <div className="Home">
       <HomeTab handleResourceUpdate={handleResourceUpdate} />

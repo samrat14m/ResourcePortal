@@ -12,6 +12,7 @@ function Resource() {
   const [data, setData] = useState({});
   const [itemsArr, setItemsArr] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
+  const [isPending, setIsPending] = useState(true);
 
   let checkboxIdArr = [];
   const [deleteBtnDisabled, setDeleteBtnDisabled] = useState(true);
@@ -38,14 +39,16 @@ function Resource() {
         .then((res) => res.json())
         .then((actualData) => {
           return (
-            setData({ ...actualData }), setItemsArr(actualData.resource_items)
+            setData({ ...actualData }),
+            setItemsArr(actualData.resource_items),
+            setIsPending(false)
           );
         })
         .catch((e) => console.error(e));
     };
     const timer = setTimeout(() => {
       fetchData();
-    }, 2500);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [id]);
@@ -153,8 +156,7 @@ function Resource() {
   }
 
   // conditional rendering for loading screen
-  if (Object.keys(data).length === 0) return <Loading message={"Loading..."} />;
-
+  if (isPending) return <Loading message={"Loading..."} />;
   return (
     <div>
       <ResourceHead data={data} goBack={goBack} />

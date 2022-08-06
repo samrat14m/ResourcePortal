@@ -43,6 +43,11 @@ function Form() {
         if (res.status === 200) {
           successToastGenrator("Item Added Succesfully");
         }
+        if (res.status === 403) {
+          errorToastGenrator(
+            "Server Understood the request but refuses to authorize"
+          );
+        }
       })
       .catch((e) =>
         errorToastGenrator(`Error in Form Submition \n ${e.message}`)
