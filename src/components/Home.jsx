@@ -363,8 +363,8 @@ function Home() {
         })}
       </div>
       <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
+        previousLabel={"<<"}
+        nextLabel={">>"}
         pageCount={pageCount}
         onPageChange={changePage}
         containerClassName={"paginationBtns"}

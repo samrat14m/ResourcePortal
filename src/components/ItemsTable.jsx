@@ -17,6 +17,7 @@ function ItemsTable({ currentItems, handleCheckBoxClick }) {
               <tr key={element.id}>
                 <td>
                   <input
+                    className="checkbox"
                     type="checkbox"
                     onClick={(event) => {
                       handleCheckBoxClick(event, element.id);

@@ -58,7 +58,7 @@ function Login() {
   }
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="loginform" onSubmit={handleSubmit}>
         <div>
           <label for="phoneNumber">Enter your Phone No.</label>
           <input

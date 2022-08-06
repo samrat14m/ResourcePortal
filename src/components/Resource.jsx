@@ -123,15 +123,15 @@ function Resource() {
     if (deleteBtnDisabled) {
       return (
         <Link to={`/resource/${id}/add`}>
-          <button className="btn btn-success" disabled={!deleteBtnDisabled}>
-            Add Item
+          <button className="addBtn" disabled={!deleteBtnDisabled}>
+            ADD ITEM
           </button>
         </Link>
       );
     } else {
       return (
-        <button className="btn btn-success" disabled={!deleteBtnDisabled}>
-          Add Item
+        <button className="addBtn" disabled={!deleteBtnDisabled}>
+          ADD ITEM
         </button>
       );
     }
@@ -165,24 +165,26 @@ function Resource() {
         currentItems={displayItems}
         handleCheckBoxClick={checkBoxClick}
       />
-      <div
-        className="functions"
-        style={{ display: "flex", justifyContent: "space-between" }}
-      >
-        <div>
-          {addItemBtn()}
-          <button
-            className="btn btn-danger"
-            onClick={deleteItemsById}
-            disabled={deleteBtnDisabled}
-          >
-            Delete Item
-          </button>
+      <div className="bottombuttons">
+        <div
+          className="functions"
+          style={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <div>
+            {addItemBtn()}
+            <button
+              className="deleteBtn"
+              onClick={deleteItemsById}
+              disabled={deleteBtnDisabled}
+            >
+              DELETE
+            </button>
+          </div>
         </div>
-        <div>
+        <div className="paginateBtns">
           <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
+            previousLabel={"<<"}
+            nextLabel={">>"}
             pageCount={pageCount}
             onPageChange={changePage}
             containerClassName={"paginationBtns"}

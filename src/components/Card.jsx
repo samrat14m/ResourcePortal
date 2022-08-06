@@ -4,21 +4,23 @@ function Card({ card }) {
   return (
     <div className="Card">
       <div className="cardHead">
-        <img src={card.icon_url} alt="" width={"40px"} />
+        <div className="cardimage"></div>
         <div>
           <div>
-            <h4>{card.title}</h4>
+            <div className="cardtitle">{card.title}</div>
           </div>
-          <div>{card.category}</div>
+          <div className="cardcategory">{card.category}</div>
         </div>
       </div>
-      <a href={card.link} target="_blank" rel="noopener noreferrer">
-        {card.link}
-      </a>
-      <p>{card.description}</p>
-      <Link to={`/resource/${card.id}`}>
-        <button>Show More</button>
-      </Link>
+      <div className="cardbottomhalf">
+        <a href={card.link} target="_blank" rel="noopener noreferrer">
+          {card.link}
+        </a>
+        <div className="carddescription">{card.description}</div>
+        <Link to={`/resource/${card.id}`}>
+          <button className="cardbtn">Show More</button>
+        </Link>
+      </div>
     </div>
   );
 }

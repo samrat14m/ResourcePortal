@@ -1,17 +1,27 @@
 import React from "react";
 
-function ResourceHead({ data, logOut }) {
+function ResourceHead({ data, goBack }) {
   return (
-    <div className="description">
-      <button onClick={logOut}>Resource</button>
-      <img src={data.icon_url} alt="" width={"60px"} />
-      {data.title}
-      <a href={data.link} target={"_blank"} rel="noreferrer">
-        {data.link}
-      </a>
-      {data.description}
-      <button className="btn btn-primary">Update</button>
-    </div>
+    <>
+      <button className="goback" onClick={goBack}>
+        &lt; Resource
+      </button>
+      <div className="description">
+        <div className="descriptionTop">
+          <div className="descriptionImgContainer">
+            <img src={data.icon_url} alt="" height={"60px"} />
+          </div>
+          <div className="namelink">
+            <div>{data.title}</div>
+            <a href={data.link} target={"_blank"} rel="noreferrer">
+              {data.link}
+            </a>
+          </div>
+        </div>
+        <div>{data.description}</div>
+        <button className="updatebtn">UPDATE</button>
+      </div>
+    </>
   );
 }
 

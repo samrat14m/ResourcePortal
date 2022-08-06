@@ -1,16 +1,18 @@
+@import url("https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css");
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'HK Grotesk', sans-serif;
 }
 a{
   text-decoration: none;
+  color: #0B69FF;
 }
 .App {
   text-align: center;
   background-color: #F5F5F5;
-  font-size: 15px;
+  font-size: 14px;
 }
 /*Header */
 .header{
@@ -18,7 +20,8 @@ a{
   margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(155, 155, 155);
+  border-bottom: 2px solid  #D7DFE9;
+  background-color: #FFFFFF;
 }
 .header img {
   padding: 0.5rem 2rem;
@@ -28,20 +31,62 @@ a{
   margin: 0 10vw;
   min-height: 65.25vh;
 }
+
+
 /* home tab*/
 
 .hometab{
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-style:bold;
 }
+
+.navbtn1{
+  border-radius: 5px 0 0 5px;;
+}
+.navbtn3{
+  border-radius: 0 5px 5px 0;
+}
+
+.navbuttons{
+  border: 1px solid #D7DFE9;
+  height: 40px;
+  width: 200px;
+  color: #171F46;
+  background: rgba(215, 223, 233, 0.24);
+  font-weight: bold;
+  }
+.navbuttons:hover{
+    background: #0B69FF;
+    border: 1px solid #D7DFE9;
+    color: #FFFFFF;
+}
+.navbuttons:active{
+  background: #0B69FF;
+  border: 1px solid #D7DFE9;
+  color: #FFFFFF;
+}
+.navbuttons:checked{
+    background: #0B69FF;
+    border: 1px solid #D7DFE9;
+    color: #FFFFFF;
+}
+
+
 /* Search Bar*/
 .searchBar{
   display: flex;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgb(155, 155, 155);
-  border-radius: 2px;
+  margin-bottom: 2rem;
   width: 50vw;
-
+  background: #FFFFFF;
+  border: 1px solid #D7DFE9;
+  border-radius: 3px;
+  font-weight: 400;
 }
+
 .searchBar input{
   width: 100%;
   height: 40px;
@@ -51,8 +96,17 @@ a{
 
 .searchBar img{
   width: 40px;
-  padding: 0.7rem;
+  padding: 0.85rem;
 }
+/** Sort Buttons*/
+
+.buttongroup,.buttondropdown,.buttondropdown:hover{
+ background: none;
+ border: none;
+ color: #000;
+ padding: 5px 0 0 10px;
+}
+
 
 .cardContainer{
   display: flex;
@@ -64,17 +118,18 @@ a{
 
 .card{
   width: 30%;
-  height: auto;
-  border: 1px solid rgb(155, 155, 155);
+  height: 210px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   margin: 0 1rem 2.5rem 0;
-  border-radius: 5px;
-  padding: 1rem;
+  padding: 0.5rem;
   font-size: 90%;
   color: #7E858E;
+  background: #FFFFFF;  
+  border: 1px solid #D7DFE9;
+  border-radius: 4px;
 }
 
 
@@ -82,10 +137,35 @@ a{
 .cardHead{
   display: flex;
 }
-.cardHead img{
-  margin: 0 1rem 0 0;
-  border: 1px solid rgb(155, 155, 155);
-  border-radius: 2px;
+.cardimage{
+ width: 40px;
+ height: 40px;
+box-sizing: border-box;
+ background: #FFFFFF;
+  border: 2px solid #D7DFE9;
+  border-radius: 4px;
+  margin: 1rem;
+}
+.cardimage + div{
+  margin-top: 1rem;
+}
+
+.cardtitle{
+  font-family: 'HK Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #171F46;
+}
+
+.cardcategory{
+  font-family: 'HK Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #7E858E;
 }
 .card a div{
   color: #7E858E;
@@ -96,52 +176,172 @@ a{
  text-decoration: none;
 }
 
-/**** Resource Page ****/
+.cardbottomhalf{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+  justify-content:center;
+}
+.carddescription{
+  margin: 0.5rem 0;
+}
 
+.cardbtn{
+    color: #171F46;
+    background: rgba(215, 223, 233, 0.24);
+    font-weight: 500;
+    background: #0B69FF;
+    border: 1px solid #D7DFE9;
+    color: #FFFFFF;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+}
+.cardbtn:hover{
+  background: #F5F5F5;
+  color: #171F46;
+  font-weight: bold;
+  
+}
+
+/**** Resource Page ****/
+.goback{
+  border: none;
+  background: none;
+  font-weight: bold;
+  display: block;
+  font-size: 12px;
+}
 .description{
   display: flex;
-  flex-direction: row;
-  height: 100px;
-  border: 1px solid rgb(155, 155, 155);
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2rem 0;
 }
+
+.descriptionTop{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.namelink div{
+    margin: 0 1rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    color: #171F46;
+}
+/*** FUNCTION BUTTONS */
+.updatebtn ,.addBtn,.deleteBtn{
+      background: #0B69FF;
+      border: 1px solid #D7DFE9;
+      color: #FFFFFF;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: 600;
+      margin-top: 2rem;
+}
+.addBtn{
+  background: #2DCA73;
+  margin-right: 1rem;
+}
+.deleteBtn{
+  background: #FF0B37;
+}
+
+.bottombuttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.paginateBtns{
+  width:75%;
+}
+.LogOutBtn{
+  color: #FF0B37;
+}
+
+/** Table*/
+
 .tableContainer{
   margin: 1rem 0;
 }
 table,
 th,
 tr {
-  border: 1px solid rgb(155, 155, 155);
+  height: 4rem;
+  border: 1px solid #D7DFE9;
   border-collapse: collapse;
-  padding: 2px 5px;
+  padding: 1rem;
   font-size: 0.9rem;
+  text-align: center;
+  background-color: #FFFFFF;
 }
-th{
-  min-height:3rem;
+thead{
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 2rem;
+  background-color: #7E858E;
+}
+.checkbox{
+  margin: 1rem;
 }
 
 /***** Add Item Page ***/
 
-.AddItem{
-  max-width: 100vw;
+.container{
+  display: flex;
+  margin-top:-33px;
+}
+.container-left,.container-right{ 
+ height: 100vh;
+}
+.container-left{
+  width:57%;
+  margin-right: 5px;
+}
+.container-left div{
+  margin: 1rem 0 2rem 0;
+  background: #F5F5F5;
+}
+
+.container-right{
+  width:43%;
+  background-position: center;
+  background-clip: border-box;
+}
+
+.formcontainer{
   display: flex;
 }
-
-
-
-.AddItem div{
+.blank{
+  height: max-content;
+  width: 50px;
+}
+/*** add Form **/
+.addform{
+  width:500px;
+}
+.addform div{
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 25%;
+  font-size: 12px;
 }
 
-.AddItem img{
-  width: 600px;
-  object-fit:fill;
-  height: 400px;
+.textArea{
+  height: 100px;
 }
+
 
 /***** Login Page **/
 
-.form{
+.loginform{
   border: 1px solid #7E858E;
   border-radius: 10px;
   padding: 3rem;
@@ -150,39 +350,38 @@ th{
   margin: 10vh 25vw 0;
 }
 
-/*** Footer ***/
-.foot{
-  width: 100vw;
-  background-color: rgba(39, 39, 239, 0.705);
-  height: 100px;
-}
-
 
 /*** pagination styles **/
 .paginationBtns{
-  color: blue;
+  color: #171F46;
   width: 80%;
-  height:40px;
+  height:60px;
   list-style: none;
   display: flex;
-  justify-content: center; 
+  justify-content:center;
 }
 
 .paginationBtns a{
   text-decoration: none;
-  padding:10px;
-  border: 1px solid blue;
-  border-radius: 5px;
-  color: blue;
+  padding:6px  10px;
+  color: #171F46;
+  margin: 0 5px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bolder;
+  border: 2px solid #D7DFE9;
+  border-radius: 2px;
+
 }
 
 .paginationBtns a:hover{
-  color: white;
-  background-color: blue;
+  color: black;
+  border: 2px solid black;
 }
 
 .paginationActive a{
-  color: white;
-  background-color: blue;
+  color: black;
+  background-color: white;
+  border: 2px solid #0B69FF;
 }
+

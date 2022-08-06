@@ -33,7 +33,7 @@ function Header() {
               handleUser();
             }}
           />
-          <button onClick={logOut} style={buttonStyle}>
+          <button className="LogOutBtn" onClick={logOut} style={buttonStyle}>
             Log Out
           </button>
         </div>

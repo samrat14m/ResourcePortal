@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './App.css';
 import {BrowserRouter as Router} from "react-router-dom";
+import("typeface-hk-grotesk");
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
