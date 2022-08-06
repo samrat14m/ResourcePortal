@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [admin] = useState({
+  const admin = {
     phoneNumber: "9191919191",
     password: "adminlogin",
-  });
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,19 +19,8 @@ function Login() {
     authentication =
       userId === admin.phoneNumber && key === admin.password ? true : false;
     console.log(authentication);
-    if (authentication) {
-      toast.success("Logged In", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      navigate("/resource");
-    } else {
-      toast.error("Bad Credentials!! Try Again", {
+    if (userId.length !== 10) {
+      toast.error("Enter a 10 digit phone number", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -41,19 +30,43 @@ function Login() {
         progress: undefined,
       });
       navigate("/");
+    } else {
+      if (authentication) {
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        navigate("/resource");
+      } else {
+        toast.error("Bad Credentials!! Try Again", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        navigate("/");
+      }
     }
   }
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
         <div>
-          <label for="phone_number">Enter your Phone No.</label>
+          <label for="phoneNumber">Enter your Phone No.</label>
           <input
             type="text"
-            name="phone_number"
-            id="phone_number"
-            className="form-control mb-3"
+            name="phoneNumber"
+            id="phoneNumber"
             required="true"
+            className="form-control mb-3"
           />
           <label for="password">Enter Password:</label>
           <input

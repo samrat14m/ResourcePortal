@@ -120,3 +120,38 @@ navigate("/", { replace: true });
     setCurrentPage(itemNumber);
   }
 
+-------------
+
+function handleSubmit(e) {
+    e.preventDefault();
+    let authentication = false;
+
+    let userId = e.target[0].value;
+    let key = e.target[1].value;
+    authentication =
+      userId === admin.phoneNumber && key === admin.password ? true : false;
+    console.log(authentication);
+    if (authentication) {
+      toast.success("Logged In", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/resource");
+    } else {
+      toast.error("Bad Credentials!! Try Again", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/");
+    }
+  }
